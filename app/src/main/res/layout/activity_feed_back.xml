@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    >
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="@color/hapcolor">
+    </android.support.v7.widget.Toolbar>
+
+    <LinearLayout
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"
+        android:background="@drawable/square"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:text="Driver Id :"
+            android:layout_gravity="center"
+            android:paddingLeft="20dp"
+            android:textColor="@color/hapcolor"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:layout_width="150dp"
+            android:height="50dp"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:id="@+id/driverid"/>
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"
+        android:background="@drawable/square"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:text="Ride Id :"
+            android:layout_gravity="center"
+            android:paddingLeft="20dp"
+            android:textColor="@color/hapcolor"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:layout_height="wrap_content"/>
+        <EditText
+            android:layout_width="150dp"
+            android:height="50dp"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:id="@+id/rideid"/>
+
+    </LinearLayout>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textSize="25dp"
+        android:textColor="@color/hapcolor"
+        android:text="Give Feedback Below:"/>
+
+    <RadioGroup
+        android:id="@+id/radioo"
+        android:paddingTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/good"
+            android:textSize="20dp"
+            android:text="good"/>
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/average"
+            android:textSize="20dp"
+            android:text="Average"/>
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/bad"
+
+            android:textSize="20dp"
+            android:text="Bad"/>
+    </RadioGroup>
+    <EditText
+        android:layout_width="350dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="20dp"
+        android:hint="Or Type feedback here"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:background="@drawable/square"
+        android:id="@+id/review"/>
+    <Button
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/submit"
+        android:background="@color/hapcolor"
+        android:textColor="@color/white"
+        android:layout_gravity="center"
+        android:text="submit"
+        />
+
+</LinearLayout>

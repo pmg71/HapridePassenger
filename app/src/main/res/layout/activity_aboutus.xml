@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:orientation="horizontal">
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:background="@color/hapcolor">
+            </android.support.v7.widget.Toolbar>
+        </LinearLayout>
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TableLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TableRow android:layout_marginTop="30dp"
+                    android:layout_marginLeft="15dp">
+                    <TextView
+                        android:layout_column="2"
+                        android:textStyle="bold"
+                        android:layout_marginLeft="-8dp"
+                        android:layout_width="wrap_content"
+                        android:text="About our Company :"
+                        android:textSize="20dp"></TextView>
+                </TableRow>
+                <TableRow android:layout_marginTop="20dp"
+                    android:layout_marginLeft="15dp">
+                    <TextView
+                        android:layout_column="1"
+                        android:text="✔"></TextView>
+                    <TextView
+                        android:layout_column="2"
+                        android:layout_marginLeft="5dp"
+                        android:paddingRight="40dp"
+                        android:layout_width="wrap_content"
+                        android:text="Cadrac Labs is an Research and Development organization Experimental in advanced technologies such as Cloud and AI."></TextView>
+                </TableRow>
+                <TableRow android:layout_marginTop="20dp"
+                    android:layout_marginLeft="15dp">
+                    <TextView
+                        android:layout_column="1"
+                        android:text="✔"></TextView>
+                    <TextView
+                        android:layout_column="2"
+                        android:layout_marginLeft="5dp"
+                        android:paddingRight="40dp"
+                        android:layout_width="wrap_content"
+                        android:text="Our MISSION in Research and Development is to acquire, develop and educate to innovate in the field of Information Technology."></TextView>
+                </TableRow>
+                <TableRow android:layout_marginTop="20dp"
+                    android:layout_marginLeft="15dp">
+                    <TextView
+                        android:layout_column="1"
+                        android:text="✔"></TextView>
+                    <TextView
+                        android:layout_column="2"
+                        android:layout_marginLeft="5dp"
+                        android:paddingRight="40dp"
+                        android:layout_width="wrap_content"
+                        android:text="Most of our research is geared towards developing and under-developed countries to solve their existing problems in the area of Traffic, Education, Unemployment, Corruption. "></TextView>
+                </TableRow>
+
+                <TableRow android:layout_marginTop="20dp"
+                    android:layout_marginLeft="15dp">
+                    <TextView
+                        android:layout_column="1"
+                        android:text="✔"></TextView>
+                    <TextView
+                        android:layout_column="2"
+                        android:layout_marginLeft="5dp"
+                        android:paddingRight="40dp"
+                        android:layout_width="wrap_content"
+                        android:text="Our team of researchers comes from all different backgrounds globally and support our solutions 24x7 globally."></TextView>
+                </TableRow>
+
+            </TableLayout>
+        </ScrollView>
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_marginTop="20dp"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:id="@+id/ll">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/corner"
+        android:orientation="horizontal">
+        <!--<android.support.v7.widget.CardView-->
+            <!--android:id="@+id/card_view"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--/>-->
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_marginTop="0dp"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp"
+    android:background="@drawable/squarstroke"
+    android:layout_height="wrap_content">
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:id="@+id/agentname"
+            android:paddingLeft="10dp"
+            android:paddingTop="2dp"
+            android:textColor="@color/black"
+            android:hint="agentname"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="1"/>
+
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:background="@color/hapcolor"
+        android:text="Request"
+        android:id="@+id/request"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:src="@drawable/callbutton"
+            android:id="@+id/call"
+            />
+</LinearLayout>
+
+    </LinearLayout>
+
+    <!--<View-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="5dp"-->
+        <!--android:background="#f8f9f9"></View>-->
+
+</LinearLayout>

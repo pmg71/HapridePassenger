@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/home"
+        android:icon="@drawable/home"
+        android:title="Home" />
+    <item
+        android:id="@+id/profile"
+        android:icon="@drawable/myprofile"
+        android:title="Profile" />
+    <item
+        android:id="@+id/currentroutes"
+        android:icon="@drawable/myprofile"
+        android:title="Current Routes" />
+
+
+    <item android:id="@+id/Howtouseapp"
+        android:icon="@drawable/howtouseapp"
+        android:title="How To Use App" ></item>
+    <item android:id="@+id/aboutus"
+        android:icon="@drawable/about"
+        android:title="About Us" ></item>
+    <item android:id="@+id/contactus"
+        android:icon="@drawable/contact"
+        android:title="Contact Us" ></item>
+    <item android:id="@+id/logout"
+        android:icon="@drawable/logout"
+        android:title="Log out" ></item>
+
+</menu>

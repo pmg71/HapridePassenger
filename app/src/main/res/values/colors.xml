@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#AD81CE</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="white">#fff</color>
+    <color name="black">#000</color>
+    <color name="trans">#00000000</color>
+    <color name="trans_black">#90000000</color>
+    <color name="btn_dark">#0e9d58</color>
+    <color name="counter_text_color">#c5c4c4</color>
+    <color name="login_btn">#449d44</color>
+    <color name="red">#f82032</color>
+    <color name="gray">#E6E6E6</color>
+    <color name="green">#449d44</color>
+    <color name="textbg">#EBEBEB</color>
+    <color name="textcolor">#3386DF</color>
+    <color name="topcolor">#390063</color>
+    <color name="hapcolor">#AD81CE</color>
+</resources>
