@@ -81,9 +81,10 @@ public interface API {
 
             );
 
-    @GET("passengerRequest.php")//cost
+    @GET("passengerRequest.php")//cpassenger request
     Call<PassengerRequestResponse> datainsertion(
             @Query("gi_id") String gi_id,
+            @Query("passengerName") String passName,
             @Query("usernumber") String usernumber,
             @Query("source") String source1,
             @Query("destination") String selectdestination,

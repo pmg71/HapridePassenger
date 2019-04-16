@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="300dp">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
@@ -15,36 +15,46 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:gravity="center"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
         android:orientation="horizontal">
 
 
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="30dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textStyle="bold"
             android:id="@+id/source"
             android:text="source"/>
         <ImageView
             android:layout_width="30dp"
             android:layout_height="30dp"
+            android:layout_gravity="center"
             android:src="@drawable/ic_to"
             android:id="@+id/to"/>
 
-        <Spinner
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"
+        <com.cadrac.mylibrary.SearchableSpinner
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:paddingTop="30dp"
+            android:paddingLeft="20dp"
+            android:gravity="center"
             android:id="@+id/destination"
-            android:text="destination"/>
+        android:backgroundTint="@color/white"
+            />
         <ImageView
             android:layout_width="30dp"
             android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:visibility="gone"
             android:id="@+id/rupee"
             android:src="@drawable/rupee"
             />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="30dp"
+            android:gravity="center"
             android:id="@+id/fare"
             android:text="fare"/>
 
@@ -52,34 +62,49 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:gravity="center_horizontal"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+
         android:orientation="horizontal">
 
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            android:text="Vehicle type"
+            android:layout_height="wrap_content"
+            android:text="Vehicle type  :"
+            android:layout_gravity="center"
+            android:textStyle="bold"
             android:id="@+id/vehicletypetxt"/>
-        <Spinner
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            android:id="@+id/vehicletype"></Spinner>
+        <com.cadrac.mylibrary.SearchableSpinner
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:paddingTop="30dp"
+            android:paddingLeft="20dp"
+            android:gravity="center"
+android:backgroundTint="@color/white"
+            android:id="@+id/vehicletype"></com.cadrac.mylibrary.SearchableSpinner>
 
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            android:text="No.of seats"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:textStyle="bold"
+            android:text="Seats  :"
             android:id="@+id/seatstxt"/>
-        <Spinner
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            android:id="@+id/seats"></Spinner>
+        <com.cadrac.mylibrary.SearchableSpinner
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:paddingTop="30dp"
+            android:paddingLeft="20dp"
+            android:layout_gravity="center"
+            android:backgroundTint="@color/white"
+            android:id="@+id/seats"></com.cadrac.mylibrary.SearchableSpinner>
 
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="30dp"
+        android:layout_marginTop="0dp"
         android:orientation="horizontal">
 
         <TextView

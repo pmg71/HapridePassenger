@@ -1,5 +1,6 @@
 package com.cadrac.hap_passenger.activity;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.preference.PreferenceManager;
@@ -16,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.cadrac.hap_passenger.MainActivity;
 import com.cadrac.hap_passenger.R;
 
 import com.cadrac.hap_passenger.responses.PassengerRequestResponse;
@@ -23,6 +25,7 @@ import com.cadrac.hap_passenger.responses.PassengerRequestResponse;
 import com.cadrac.hap_passenger.utils.Config;
 import com.cadrac.hap_passenger.webservices.API;
 import com.cadrac.hap_passenger.webservices.RestClient;
+import com.cadrac.mylibrary.SearchableSpinner;
 
 import java.util.ArrayList;
 
@@ -37,26 +40,20 @@ import static android.content.ContentValues.TAG;
 
 public class PassengerRequest extends AppCompatActivity {
 
-   // RecyclerView recyclerView;
     TextView source,fare,seatstext,vehicletypetxt,book;
     ImageView to,rupee;
-    Spinner destination,seats,vehicletype;
+    Spinner seats,vehicletype;
+    SearchableSpinner destination;
     String selectseats ,selectdestination;
     ArrayList<String> places, veh_type,list;
 
 
-    String source1,mvehicletype,seats_count,carcost,autocost;
-    String l,autofare,carfare;
-    int k,i,fare1,u;
+    String source1,mvehicletype,seats_count;
+    String l,autofare;
+    int k,fare1,u;
 
-
-
-
-    //  ArrayList<PassengerRequestResponse.data> data = new ArrayList<PassengerRequestResponse.data>();
     PassengerRequestResponse passengerRequestResponse;
-   // PassengerRequestAdapter passengerRequestAdapter;
 
-  //  String source,destination,fare,vehicletype,seats;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,6 +88,12 @@ public class PassengerRequest extends AppCompatActivity {
         });
 
         source.setText(source1);
+        destination.setSelection(0);
+        vehicletype.setSelection(0);
+
+        seats.setSelection(0);
+
+
 
 
         destination.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -100,7 +103,8 @@ public class PassengerRequest extends AppCompatActivity {
                 selectdestination = destination.getSelectedItem().toString();
                 Log.d("TAG", "onItemSelected: "+destination);
 
-                if (selectdestination.equalsIgnoreCase("Please Select Your destination") ){
+                if (selectdestination.equalsIgnoreCase("Select Destination") ){
+
 
 
                 }else{
@@ -129,14 +133,9 @@ public class PassengerRequest extends AppCompatActivity {
                 Log.d("TAG", "onItemSelected: vehicletype"+mvehicletype);
 
                 seatsSpinner();
-                costDetails();
-                seats.setSelection(0);
+               costDetails();
                 fare.setText("");
 
-
-
-
-//                fareCal();
             }
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
@@ -144,27 +143,6 @@ public class PassengerRequest extends AppCompatActivity {
             }
 
         });
-
-        //seatsSpinner();
-        seats.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-                selectseats = seats.getSelectedItem().toString();
-                Log.d("TAG", "onItemSelected: "+selectseats);
-                seatsSpinner();
-             //  costDetails();
-
-
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-
-
 
 
         destinationSpinner();
@@ -173,7 +151,7 @@ public class PassengerRequest extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                        if (selectdestination.equalsIgnoreCase("Please Select Your destination") ){
+                        if (selectdestination.equalsIgnoreCase("Select Destination") ){
                             Toast.makeText(getApplicationContext(),
                                     "select destination",
                                     Toast.LENGTH_LONG).show();
@@ -183,6 +161,7 @@ public class PassengerRequest extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(),
                             "select vehicle type",
                             Toast.LENGTH_LONG).show();
+
                 }
                         else if(u==0){
                             Toast.makeText(getApplicationContext(),
@@ -238,8 +217,10 @@ public class PassengerRequest extends AppCompatActivity {
                         Log.d("TAG", "onResponse: 2");
                         for(int i=0;i<passengerRequestResponse.getData().length;i++) {
                             places.add(passengerRequestResponse.getData()[i].getDestination().toString());
+
                         }
                         setPlacesAdapter(places);
+
                     }
                     else{
                         Toast.makeText(getApplicationContext(),"sorry",Toast.LENGTH_SHORT).show();
@@ -265,7 +246,7 @@ public class PassengerRequest extends AppCompatActivity {
         ArrayList<String> fun;
         fun = new ArrayList<String>();
 
-        fun.add(0,"Please Select Your destination");
+        fun.add(0,"Select Destination");
 
         fun.addAll(place);
 
@@ -292,20 +273,23 @@ public class PassengerRequest extends AppCompatActivity {
                 public void onResponse(Call<PassengerRequestResponse> call,
                                        Response<PassengerRequestResponse> response) {
                     Log.d("TAG", "onResponse:1234 ");
-                    veh_type = new ArrayList<String>();
                     passengerRequestResponse = new PassengerRequestResponse();
                     Log.d("TAG", "onResponse:type "+passengerRequestResponse.getStatus());
                     passengerRequestResponse = response.body();
+                    veh_type = new ArrayList<String>();
 
                     if (passengerRequestResponse.getStatus().equalsIgnoreCase("success")) {
                         Log.d("TAG", "onResponse: 2");
                         try {
 
 
-                            for (int i = 0; i < passengerRequestResponse.getData().length; i++) {
-                                veh_type.add(passengerRequestResponse.getData()[i].getVehicletype().toString());
-                                Log.d("TAG", "onResponse: vtype"+passengerRequestResponse.getData()[i].getVehicletype().toString());
+                            for (int i = 0; i <passengerRequestResponse.getData().length; i++) {
+                                veh_type.add(passengerRequestResponse.getData()[i].getVehicletype());
+                                Log.d("TAG", "onResponse: vtype"+passengerRequestResponse.getData()[0].getVehicletype());
+                                Log.d("TAG", "onResponse: vtype"+passengerRequestResponse.getData()[1].getVehicletype());
                             }
+                            fareCal();
+
                         }catch(Exception e)
                         {
                             e.printStackTrace();
@@ -374,15 +358,11 @@ public class PassengerRequest extends AppCompatActivity {
                     Log.d("TAG", "onResponse: 1");
                     if (passengerRequestResponse.getStatus().equalsIgnoreCase("success")) {
                         Log.d("TAG", "onResponse: 2");
-                       /* for(int i=0;i<passengerRequestResponse.getData().length;i++) {
 
-                            seats_count.add(passengerRequestResponse.getData()[i].getSeats().toString());
-                            Log.d("TAG", "seatscount"+ passengerRequestResponse.getData()[i].getSeats().toString());
-                        }*/
                        seats_count=passengerRequestResponse.getSeats();
 
                         Log.d("TAG", "seatscount"+ passengerRequestResponse.getSeats());
-                        //setSeatsAdapter(seats_count);
+
                     }
                     else{
                         Toast.makeText(getApplicationContext(),"hai",Toast.LENGTH_SHORT).show();
@@ -403,29 +383,6 @@ public class PassengerRequest extends AppCompatActivity {
 
     }
 
- /*   public void setSeatsAdapter(ArrayList<String> place) {
-
-        ArrayList<String> fun;
-        fun = new ArrayList<String>();
-
-        int seatsLeft =Integer.parseInt(seats_count);
-
-
-        for(int i=1;i<=(seatsLeft);i++){
-            fun.add("passenger "+String.valueOf(i));
-            System.out.println("seats are "+i);
-
-        }
-
-        fun.add(0,"Please Select seats");
-
-        fun.addAll(place);
-
-
-
-        seats.setSelection(0);
-        seats.setAdapter(new ArrayAdapter<String>(getApplicationContext(), R.layout.support_simple_spinner_dropdown_item, fun));
-    }*/
 
     public void costDetails(){
       //  if (connection_detector.isConnectingToInternet()) {
@@ -455,26 +412,11 @@ public class PassengerRequest extends AppCompatActivity {
                         Log.d("TAG", "onResponse:1234567890 " + passengerRequestResponse);
                         try {
 
-                            /*if(mvehicletype.equalsIgnoreCase("Auto")){
-                                Log.d("TAG", "onItemSelected: vehicletype11"+mvehicletype);
-                                Log.d("TAG", "autofare"+passengerRequestResponse.getData()[0].getAutocost());
-                                autofare=passengerRequestResponse.getData()[0].getAutocost();
-                                fare.setText(autofare);
 
-
-                            }else if(mvehicletype.equalsIgnoreCase("Car")){
-
-                                Log.d("TAG", "carfare"+passengerRequestResponse.getData()[0].getCabcost());
-
-
-                                carfare=passengerRequestResponse.getData()[0].getCabcost().toString();
-                                fare.setText(carfare);
-
-                            }*/
                             Log.d("TAG", "autofare" + passengerRequestResponse.getStatus());
                             if (passengerRequestResponse.getStatus().equalsIgnoreCase("true")) {
                                autofare= passengerRequestResponse.getCost();
-                                fare.setText(autofare);
+
                                 fareCal();
                                 Log.d("TAG", "autofare" + passengerRequestResponse.getCost());
 
@@ -506,13 +448,15 @@ public class PassengerRequest extends AppCompatActivity {
     public void fareCal(){
 
         list = new ArrayList<String>();
-        Log.d(TAG, "fareCal: "+seats_count);
+        Log.d(TAG, "fareCalrr: "+seats_count);
         int seatsLeft =Integer.parseInt(seats_count);
 
 
+
         for(int i=1;i<=(seatsLeft);i++){
-            list.add("passenger "+String.valueOf(i));
+            list.add(String.valueOf(i));
             System.out.println("seats are "+i);
+            rupee.setVisibility(View.VISIBLE);
 
         }
         fare1=Integer.parseInt(autofare);
@@ -618,24 +562,36 @@ public class PassengerRequest extends AppCompatActivity {
                                 .create()).build();
                 API api = RestClient.client.create(API.class);
                 String usernumber = Config.getNumber(getApplicationContext());
+                String passName=Config.getpassname(getApplicationContext());
                 String gi_id=Config.getinAgent(getApplicationContext());
                 Log.d(TAG, "hai:gi_id"+gi_id);
+                Log.d(TAG, "hai:passname"+passName);
                 Log.d(TAG, "hai:user "+usernumber);
                 Log.d(TAG, "hai:so"+source1);
                 Log.d(TAG, "hai:de "+selectdestination);
                 Log.d(TAG, "hai:ve "+mvehicletype);
                 Log.d(TAG, "hai:ns "+numberofseats);
                 Log.d(TAG, "hai:af"+l);
-                Call<PassengerRequestResponse> call = api.datainsertion(gi_id,usernumber,source1, selectdestination, mvehicletype,numberofseats,l);
+                Call<PassengerRequestResponse> call = api.datainsertion(gi_id,passName,usernumber,source1, selectdestination, mvehicletype,numberofseats,l);
                 call.enqueue(new Callback<PassengerRequestResponse>() {
                     @Override
                     public void onResponse(Call<PassengerRequestResponse> call,
                                            Response<PassengerRequestResponse> response) {
                         passengerRequestResponse = response.body();
-                        Toast.makeText(getApplicationContext(), "Ride Requested", Toast.LENGTH_SHORT).show();
+                        Log.d(TAG, "onResponse11: "+passengerRequestResponse.getStatus());
 
-                   /* Intent i1=new Intent(getContext(),GetOutActivity.class);
-                    startActivity(i1);*/
+                        if (passengerRequestResponse.getStatus().equalsIgnoreCase("True")) {
+                            Toast.makeText(getApplicationContext(), "Ride Requested", Toast.LENGTH_SHORT).show();
+
+                            Intent i1 = new Intent(getApplicationContext(), MainActivity.class);
+                            startActivity(i1);
+                        } else if(passengerRequestResponse.getStatus().equalsIgnoreCase("false")){
+
+                            Toast.makeText(getApplicationContext(),
+                                    "Try Again",
+                                    Toast.LENGTH_LONG).show();
+
+                        }
                     }
 
                     @Override
@@ -648,13 +604,19 @@ public class PassengerRequest extends AppCompatActivity {
                     }
 
                 });
-           /* Intent i=new Intent(getContext(),GenIn_Activity.class);
-            startActivity(i);*/
+
             } catch (Exception e) {
                 System.out.println("msg:" + e);
             }
 
 
+    }
+    public void onBackPressed() {
+
+        Intent i=new Intent(PassengerRequest.this,MainActivity.class);
+        i.addCategory(Intent.CATEGORY_HOME);
+        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(i);
     }
 
 

@@ -485,7 +485,7 @@ TextView name;
 
         Log.d("TAG", "onLocationChanged: "+location);
 
-
+        mMap.clear();
         mMap.addMarker(new MarkerOptions().position(new LatLng(location.getLatitude(), location.getLongitude())).title("your location").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)));
 
         if(l==0) {
